@@ -16,17 +16,17 @@
       default = pkgs.buildNpmPackage rec {
         owner = "regular";
         repo = "tre-cli";
-        version = "7ac02095";
+        version = "3c1663d";
 
         pname = repo;
 
         src = pkgs.fetchFromGitHub {
           inherit owner repo;
           rev = version;
-          sha256 = "sha256-obobuO5Ih00itO27TLWyzCeftO1yzAs7pQs5wE71mKU=";
+          sha256 = "sha256-YybhMBVvRvQoA+s6+r1RkIeit5uUnHXjyaozIkqo5G0=";
         };
 
-        npmDepsHash = "sha256-nvSfA564MpXbSFTDi7XNmGZ2G+qndoI4rkiPelI4OOY=";
+        npmDepsHash = "sha256-fWIFEZBtG4cz7KtHuWt2bM7G3j4nhLuGg0/S7AjGq6k=";
         makeCacheWritable = true;
         npmFlags = [ "--omit=dev" "--omit=optional"];
         dontNpmBuild = true;
