@@ -1,0 +1,17 @@
+--- a/index.js
++++ b/index.js
+@@ -43,7 +43,13 @@ module.exports = function (name, defaults, argv, parse) {
+     join(home, '.' + name + 'rc')].forEach(addConfigFile)
+   addConfigFile(cc.find('.'+name+'rc'))
+   if (env.config) addConfigFile(env.config)
+-  if (argv.config) addConfigFile(argv.config)
++  if (argv.config) {
++    if (Array.isArray(argv.config)) {
++      argv.config.forEach(f=>addConfigFile(f))
++    } else {
++      addConfigFile(argv.config)
++    }
++  }
+ 
+   return deepExtend.apply(null, configs.concat([
+     env,

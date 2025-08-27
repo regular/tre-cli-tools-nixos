@@ -43,6 +43,12 @@
 
           echo "Patching $dep_dir"
           patch -p1 -d "$dep_dir" < ${./patches/ssb-msgs.patch}
+          
+          # Find the dependency dir robustly (handles hoisting/nesting)
+          dep_dir=$(node -e "console.log(require.resolve('rc/package.json').replace(/package\.json$/, '''))")
+
+          echo "Patching $dep_dir"
+          patch -p1 -d "$dep_dir" < ${./patches/rc.patch}
         '';
 
         meta = {
