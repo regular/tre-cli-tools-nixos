@@ -1,0 +1,11 @@
+--- a/index.js	2025-08-27 15:22:44.823975047 +0200
++++ b/index.js	2025-08-27 15:24:34.365506608 +0200
+@@ -99,7 +99,7 @@
+   })
+   return {
+     url: function() {
+-      const host = config.host || 'localhost'
++      const host = config.ws.host || config.host || '127.0.0.1'
+       const port = config.ws.port
+       return `http://${host}:${port}/boot`
+     },
