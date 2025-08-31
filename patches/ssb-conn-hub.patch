@@ -1,0 +1,18 @@
+--- a/lib/index.js	2025-08-31 18:43:43.802132487 +0200
++++ b/lib/index.js	2025-08-31 18:45:08.493365331 +0200
+@@ -94,10 +94,11 @@
+         var netAddr = address.split('~')[0];
+         var parsed = msNetPlugin.parse(netAddr);
+         if (parsed && parsed.host) {
+-            if (IP.isPrivate(parsed.host))
+-                return 'lan';
+-            else
+-                return 'internet';
++          try {
++              if (IP.isPrivate(parsed.host))
++                  return 'lan';
++          } catch (err) {}
++          return 'internet';
+         }
+     }
+     return;
