@@ -4,8 +4,8 @@
  const {join} = require('path')
  
  module.exports = function getRemote(conf) {
-+  if (config.pub) {
-+    let pub = config.pub
++  if (conf.pub) {
++    let pub = conf.pub
 +    pub = pub.replace(/\.ed25519$/, '')
 +    return pub
 +  }
