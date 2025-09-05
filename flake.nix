@@ -62,6 +62,11 @@
           dep_dir=$(node -e "console.log(require.resolve('ssb-conn-hub/package.json').replace(/package\.json$/, '''))")
           echo "Patching $dep_dir"
           patch -p1 -d "$dep_dir" < ${./patches/ssb-conn-hub.patch}
+
+          # Find the dependency dir robustly (handles hoisting/nesting)
+          dep_dir=$(node -e "console.log(require.resolve('tre-cli-apps/package.json').replace(/package\.json$/, '''))")
+          echo "Patching $dep_dir"
+          patch -p1 -d "$dep_dir" < ${./patches/tre-cli-apps.patch}
         '';
 
         meta = {

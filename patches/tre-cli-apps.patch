@@ -1,0 +1,14 @@
+--- a/lib/get-remote.js.orig	2025-09-05 12:54:45.601600562 +0200
++++ b/lib/get-remote.js	2025-09-05 12:57:27.666453290 +0200
+@@ -2,6 +2,11 @@
+ const {join} = require('path')
+ 
+ module.exports = function getRemote(conf) {
++  if (config.pub) {
++    let pub = config.pub
++    pub = pub.replace(/\.ed25519$/, '')
++    return pub
++  }
+   const path = conf.config
+   let remotes
+   try {
