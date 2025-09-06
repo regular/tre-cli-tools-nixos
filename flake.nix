@@ -15,24 +15,23 @@
     owner = "regular";
     repo = "tre-cli";
     pname = repo;
-    version = "dc4ea24";
+    version = "a35cdea07ce53b578b418e7b7e215ca582093c32";
 
   in {
     packages = eachSystem ( { pkgs, system }: let
       src = pkgs.fetchFromGitHub {
         inherit owner repo;
         rev = version;
-        sha256 = "sha256-7hCRHV1Xr6tBK85WPfwQ6ZNZnfxFXWic7bA1pIifRD4=";
+        sha256 = "sha256-B2Ohc9b/UZiZvFcpPA7Afjj5kriyeZvrhdP2c9kQU4o=";
       };
     in {
       deps = pkgs.fetchNpmDeps {
         inherit src;
-        hash = "sha256-VPJpjNS/XhaoBAoWV5pkUSel1M/vrE9ogg1j7WxvUdw=";
       };
       default = pkgs.buildNpmPackage rec {
         inherit src version pname;
 
-        npmDepsHash = "sha256-VPJpjNS/XhaoBAoWV5pkUSel1M/vrE9ogg1j7WxvUdw=";
+        npmDepsHash = "sha256-khP7j7tnc7NaHX7P/DX2Wz2ZDbpgMboYJ6oyCQ24FFw=";
         makeCacheWritable = true;
         npmFlags = [ "--omit=dev" "--omit=optional"];
         dontNpmBuild = true;
